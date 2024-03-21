@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, "Please enter a task"],
+    required: [true, 'Please enter a task'],
   },
   description: {
     type: String,
@@ -20,19 +20,19 @@ const taskSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.ObjectId,
-    ref: "User",
-    required: [true, "Task must belong to a User!"],
+    ref: 'User',
+    required: [true, 'Task must belong to a User!'],
   },
 });
 
 taskSchema.pre(/^find/, function (next) {
-  this.populate("user").populate({
-    path: "user",
-    select: "_id",
+  this.populate('user').populate({
+    path: 'user',
+    select: '_id',
   });
   next();
 });
 
-const Task = mongoose.model("Task", taskSchema);
+const Task = mongoose.model('Task', taskSchema);
 
 module.exports = Task;

@@ -14,17 +14,37 @@ Your mission is to complete your tasks in order to defeat these octopuses. As yo
 - You can arrange the tasks according to their priority, either in increasing or decreasing order.
 - You can also arrange the tasks based on the time they were added, either in increasing or decreasing order.
 
-## Technologies and Topics Used
+## what is the difference between TODOctopus and other TODO applications?
 
-- Node.js
-- Express.js
-- MongoDB
+- To kick things off, TODOctopus it is more funy! 😊
 
-## Demo video
+- As you complete tasks, tentacles are chopped off from the octopuses, and when the last tentacle is chopped, you've successfully defeated the octopus and this make the It's more fun and competitive 
+
+
+## Demo video to see how TODOctopus works
 
 https://github.com/GergesHany/TODOctopus/assets/105644935/81a43c09-104f-4aff-9dbf-e26bbe697691
 
 <hr>
+
+## Technologies and Topics Used and Technical Information
+
+  - Technologies and Topics
+    - TODOctopus stands as a web application crafted with the Node.js and Express.js framework and MongoDB database
+
+ - Database
+   - The application uses MongoDB as a database
+   - database to store user information
+   - and another database to store tasks for users
+   
+
+
+
+
+### Demo Link
+- You can access the application using the following link:
+    - [TODOctopus](https://todoctopus.onrender.com/)
+
 
 ### documentation:
 

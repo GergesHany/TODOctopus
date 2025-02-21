@@ -1,6 +1,10 @@
 const express = require('express');
 
 const app = express();
+
+// Enable trust proxy to correctly detect client IPs behind proxies
+app.set('trust proxy', 1); 
+
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const cookieParser = require('cookie-parser');

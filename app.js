@@ -1,29 +1,27 @@
 const express = require('express');
+
 const app = express();
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
 const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
-const globalErrorHandler = require('./controllers/errorController');
 const morgan = require('morgan');
-const hpp = require('hpp');
+
+const cors = require('cors');
+const corsOptions = require("./config/corsOptions");
+
+
+const globalErrorHandler = require('./controllers/errorController');
+const AppError = require('./utils/appError');
 
 const TaskRouter = require('./routes/taskRoute');
 const authRouter = require('./routes/authRoute');
 
-const cors = require('cors');
-
 app.use(cors());
-
-app.options(
-  cors({
-    origin: ['http://localhost:3000', 'https://todoctopus.onrender.com'],
-  })
-);
+app.use(cors(corsOptions));
 
 app.use(express.json());
-
 app.use(helmet());
 
 app.use(
@@ -53,12 +51,6 @@ app.use('/api', limiter);
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-
-app.use(
-  hpp({
-    whitelist: ['priority', 'createdAt'],
-  })
-);
 
 // Routes
 app.get('/', (req, res) => {

@@ -1,12 +1,8 @@
 const AppError = require('../utils/appError');
 
-const handleJWTError = () => {
-  return new AppError('Invalid token. Please log in again!', 401);
-};
+const handleJWTError = () => new AppError('Invalid token. Please log in again!', 401);
 
-const handleJWTExpiresError = (err) => {
-  return new AppError('Your token has expired. Please log in again!', 401);
-};
+const handleJWTExpiresError = () => new AppError('Your token has expired. Please log in again!', 401);
 
 const handleValidationErrorDB = (err) => {
   const errors = Object.values(err.errors).map((el) => el.message);
@@ -61,7 +57,6 @@ const sendErrorProd = (err, req, res) => {
   // B) RENDERED WEBSITE
   // A) Operational, trusted error: send message to client
   if (err.isOperational) {
-    console.log(err);
     return res.status(err.statusCode).render('error', {
       title: 'Something went wrong!',
       msg: err.message,

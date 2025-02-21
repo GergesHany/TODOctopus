@@ -1,7 +1,11 @@
 const express = require('express');
+
 const router = express.Router();
 const taskController = require('../controllers/taskController');
+const verifyToken = require('../middleware/verifyJWT');
 
+
+router.use(verifyToken);
 router.get('/task/:id', taskController.getTask);
 router.patch('/task/:id', taskController.updateTask);
 
